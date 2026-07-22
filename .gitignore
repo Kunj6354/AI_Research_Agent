@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Databases and runtime files
+*.db
+*.sqlite
+*.sqlite3
+logs/
+
+# Frontend
+node_modules/
+.next/
+dist/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
