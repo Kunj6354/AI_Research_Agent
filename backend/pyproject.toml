@@ -9,7 +9,10 @@ description = "Evidence-driven autonomous AI research platform"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi[standard]",
+    "langgraph",
+    "openai",
     "pydantic-settings",
+    "tavily-python",
 ]
 
 [project.optional-dependencies]
