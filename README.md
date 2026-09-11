@@ -36,3 +36,30 @@ Backend documentation:
 
 Swagger UI: http://127.0.0.1:8000/docs
 Health API: http://127.0.0.1:8000/api/v1/health
+
+## Current Scope Boundary
+
+The current repository is a backend foundation rather than a completed autonomous research system.
+
+Implemented today:
+
+- FastAPI service and OpenAPI contract
+- health API
+- research-job creation and retrieval
+- validated research request/status models
+- in-memory research-job storage
+- OpenAI and Tavily client configuration
+- provider configuration safety checks
+- pytest and Ruff foundation
+
+Not yet implemented:
+
+- LangGraph research orchestration
+- live Tavily search execution
+- OpenAI research/report generation
+- evidence evaluation
+- citation verification
+- completed research reports
+- durable persistence or background workers
+
+See `docs/REMAINING_WORK.md` for the continuation plan.
