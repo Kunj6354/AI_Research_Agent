@@ -4,22 +4,21 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "stackore-ai-research-agent"
-version = "0.1.0"
-description = "Evidence-driven autonomous AI research platform"
+version = "1.0.0"
+description = "Evidence-driven AI research backend with source-grounded reports and verified citations"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi[standard]",
-    "langgraph",
-    "openai",
-    "pydantic-settings",
-    "tavily-python",
+    "fastapi[standard]==0.141.1",
+    "openai==3.13.0",
+    "pydantic-settings==2.15.0",
+    "tavily-python==0.8.2",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "httpx",
-    "pytest",
-    "ruff",
+    "httpx==0.28.1",
+    "pytest==9.1.1",
+    "ruff==0.16.7",
 ]
 
 [tool.setuptools.packages.find]

@@ -2,7 +2,7 @@ from datetime import date, datetime
 from enum import StrEnum
 from typing import Self
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, HttpUrl, model_validator
 
 
 class ResearchDepth(StrEnum):
@@ -46,6 +46,32 @@ class ResearchCreateRequest(BaseModel):
     time_range: ResearchTimeRange | None = None
 
 
+class ResearchPlan(BaseModel):
+    queries: list[str] = Field(min_length=1, max_length=10)
+
+
+class ResearchSource(BaseModel):
+    source_id: str
+    title: str = Field(min_length=1)
+    url: HttpUrl
+    content: str = Field(min_length=1)
+    relevance_score: float | None = Field(default=None, ge=0.0, le=1.0)
+
+
+class ResearchCitation(BaseModel):
+    source_id: str
+    title: str
+    url: HttpUrl
+
+
+class ResearchReport(BaseModel):
+    topic: str
+    summary: str = Field(min_length=1)
+    findings: list[str] = Field(min_length=1)
+    citations: list[ResearchCitation]
+    sources: list[ResearchSource]
+
+
 class ResearchJobResponse(BaseModel):
     research_id: str
     topic: str
@@ -54,3 +80,12 @@ class ResearchJobResponse(BaseModel):
     status: ResearchStatus
     created_at: datetime
     updated_at: datetime
+    report: ResearchReport | None = None
+    error: str | None = None
+
+
+class ProviderReadinessResponse(BaseModel):
+    openai_configured: bool
+    openai_model_configured: bool
+    tavily_configured: bool
+    ready: bool
